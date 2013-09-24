@@ -7,9 +7,9 @@
 # All rights reserved - Do Not Redistribute
 #
 
-include_recipe "build-essential"
+include_recipe 'build-essential'
 
-if platform?("ubuntu", "debian")
+if platform?('ubuntu', 'debian')
   # this recipe does not work on Ubuntu 9.04
   return if node.platform_version == '9.04'
 
@@ -18,7 +18,7 @@ if platform?("ubuntu", "debian")
       action :install
     end
   end
-elsif platform?("redhat", "centos", "scientific", "fedora", "suse")
+elsif platform?('redhat', 'centos', 'scientific', 'fedora', 'suse')
   %w{openssl-devel pam-devel}.each do |pkg|
     package pkg do
       action :install
@@ -34,16 +34,16 @@ remote_file "#{Chef::Config[:file_cache_path]}/duo_unix-#{duo_unix_version}.tar.
   action :create_if_missing
 end
 
-bash "compile-duo_unix" do
+bash 'compile-duo_unix' do
   cwd Chef::Config[:file_cache_path]
   code <<-EOH
     tar zxvf duo_unix-#{duo_unix_version}.tar.gz
     cd duo_unix-#{duo_unix_version}
-                --prefix=/usr \
+    ./configure --prefix=/usr
     make -s
     make install
   EOH
-  creates "#{node['duosecurity']['config_dir']}"
+  creates node['duosecurity']['config_dir']
 end
 
 template "#{node['duosecurity']['config_dir']}/login_duo.conf" do
