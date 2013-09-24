@@ -16,4 +16,3 @@ if platform?("ubuntu", "debian")
 elsif platform?("redhat", "centos",  "fedora")
   default['duosecurity']['config_dir'] = "/etc/security"
 end
-
