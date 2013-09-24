@@ -41,7 +41,7 @@ default['openssh']['server']['force_command']
 default['duosecurity']['duo_unix']['url']
 
 The version and checksum attributes are currently static to make sure you are downloading the correct file.
-I haven't thought of a way to make this dynamic yet. However, if you want the latest version of duo_unix, you'll need to increment the version number here as well as grab the correct checksum;
+If you want the latest version of duo_unix, you'll need to increment the version number here as well as grab the correct checksum;
 default['duosecurity']['duo_unix']['version']
 default['duosecurity']['duo_unix']['checksum']
 
