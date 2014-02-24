@@ -7,12 +7,9 @@ default['duosecurity']['host'] = ''
 default['openssh']['server']['force_command'] = "/usr/sbin/login_duo"
 
 default['duosecurity']['duo_unix']['url'] = "https://dl.duosecurity.com"
-default['duosecurity']['duo_unix']['version'] = "1.9.4"
-default['duosecurity']['duo_unix']['checksum'] = "bc8cd9c9a4774a4f85e76453488b8e12c5681fd1"
+default['duosecurity']['duo_unix']['version'] = "1.9.5"
+default['duosecurity']['duo_unix']['checksum'] = "e57793f5c301feb6e7960fdf70af7411e9503276"
 
-#Longin_duo.conf Config dir based on OS.
-if platform?("ubuntu", "debian")
-  default['duosecurity']['config_dir'] = "/etc/duo"
-elsif platform?("redhat", "centos",  "fedora")
-  default['duosecurity']['config_dir'] = "/etc/security"
-end
+#Longin_duo.conf Config dir.
+default['duosecurity']['config_dir'] = "/etc/duo"
+
