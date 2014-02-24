@@ -13,9 +13,10 @@ Note: This cookbook does not currently work on Ubuntu 9.04.
 
 Requirements
 ------------
--This cookbook requires the openssh cookbook for the ssh configuration portion.
+-This cookbook requires the openssh cookbook for the ssh configuration potion.
 -This cookbook requires the build-essential cookbook. Certain OS's can require package dependencies and may vary depending on which version of the OS you are running.
 -This cookbook installs the following libraries: libssl-dev and libpam-dev.
+e.g.
 
 #### packages
 - `libssl-dev` - Duo Security requires that this package be installed.
@@ -31,31 +32,17 @@ I recommend that you use a different 'integration' for each environment that you
 
 More on integrations here: https://www.duosecurity.com/docs/getting_started
 
+e.g.
 #### duo-security/attributes/default.rb
 default['duosecurity']['ikey']
 default['duosecurity']['skey']
 default['duosecurity']['host']
-
 default['openssh']['server']['force_command']
-
-default['duosecurity']['duo_unix']['url']
-
-The version and checksum attributes are currently static to make sure you are downloading the correct file.
-If you want the latest version of duo_unix, you'll need to increment the version number here as well as grab the correct checksum;
-default['duosecurity']['duo_unix']['version']
-default['duosecurity']['duo_unix']['checksum']
-
-if platform?("ubuntu", "debian")
-  default['duosecurity']['config_dir']
-elsif platform?("redhat", "centos",  "fedora")
-  default['duosecurity']['config_dir']
-end
-
 
 Usage
 -----
 #### duo-security::default
-There is only one cookbook at this time. This automates all the two-factor authentication things for you.
+There is only one cookbook at this time. This automates everything for you.
 
 e.g.
 Just include `duo-security` in your node's `run_list`:
@@ -72,9 +59,10 @@ Just include `duo-security` in your node's `run_list`:
 Contributing
 ------------
 
+e.g.
 1. Fork the repository on Github
 2. Create a named feature branch (like `add_component_x`)
-3. Write your change
+3. Write you change
 4. Write tests for your change (if applicable)
 5. Run the tests, ensuring they all pass
 6. Submit a Pull Request using Github
@@ -82,6 +70,7 @@ Contributing
 License and Authors
 -------------------
 Author:: [Eli Taylor] (<etaylor@kickbackpoints.com>)
+Twitter:: @elijtayor
 IRC:: Liquid-- on freenode
 
 Copyright 2013, KickBack Points, LLC
