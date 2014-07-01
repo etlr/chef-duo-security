@@ -1,7 +1,7 @@
 #
 # Cookbook Name:: duo-security
-# Author:: Eli Taylor (Much DevOps)
-# Description:: Such secure. Wow.
+# Author:: Eli Taylor
+# Description:: This recipe will install login_duo from source.
 # Recipe:: default
 #
 # Copyright 2013-2014, KickBack Points, LLC
@@ -43,7 +43,7 @@ bash "compile-duo_unix" do
     cd duo_unix-#{duo_unix_version}
     ./configure --prefix=/usr && make && make install
   EOH
-  creates "#{node['duosecurity']['config_dir']}/login_duo.conf"
+  creates "#{Chef::Config[:file_cache_path]}/duo_unix-#{duo_unix_version}"
 end
 
 template "#{node['duosecurity']['config_dir']}/login_duo.conf" do
